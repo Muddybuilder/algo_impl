@@ -5,27 +5,27 @@
 #include <random>
 
 using namespace std;
-void insertion_sort(vector<int> &orig_vec){
+void insertion_sort(vector<int> &vec){
     cout << "Original " << ": ";
-    for(auto &e:orig_vec){
+    for(auto &e:vec){
         cout<<e<<" ";
     }
     cout<<endl;
 
-    for (auto iter = next(orig_vec.begin(),1); iter != orig_vec.end(); iter++){
+    for (auto iter = next(vec.begin(),1); iter != vec.end(); iter++){   // n -1 times
         auto cur_iter {iter};
         auto prev_iter {prev(iter,1)};
-        while(*cur_iter < *prev_iter){
+        while(*cur_iter < *prev_iter){                                  // Worst case: Sum(i), from i=2 to n -> n(n-1)/2 - 1
             auto tmp = *cur_iter;
             *cur_iter-- = *prev_iter;
             *prev_iter-- = tmp;
         }
 
-        for(auto &e:orig_vec){
+        for(auto &e:vec){
             cout<<e<<" ";
         }
         cout<<endl;
-    }
+    }                                                                   // This sort algo. has worst case of THETA(n^2)
 }
 
 
