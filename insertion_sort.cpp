@@ -16,9 +16,7 @@ void insertion_sort(vector<int> &vec){
         auto cur_iter {iter};
         auto prev_iter {prev(iter,1)};
         while(*cur_iter < *prev_iter){                                  // Worst case: Sum(i), from i=2 to n -> n(n-1)/2 - 1
-            auto tmp = *cur_iter;
-            *cur_iter-- = *prev_iter;
-            *prev_iter-- = tmp;
+            std::swap(*cur_iter--, *prev_iter--);
         }
 
         for(auto &e:vec){
